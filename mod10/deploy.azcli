@@ -43,4 +43,4 @@ az vm open-port  --resource-group $azureResourceGroup --name $vmName --port 22  
 ssh demouser@twtweb-money.southeastasia.cloudapp.azure.com
 
 sudo su -l
-curl https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-mod/main/mod10/deploy.sh >deploy.sh
+curl https://raw.githubusercontent.com/lettucebo/ignite-learning-paths-training-mod/main/mod10/deploy.sh >deploy.sh

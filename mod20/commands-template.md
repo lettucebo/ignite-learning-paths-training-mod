@@ -10,123 +10,93 @@ Save a copy of this file and replace the expressions in `[]` below according to 
 
 ### Credentials
 
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-Username: [USERNAME]
-Password: [PASSWORD]
+Username: demouser
+Password: Azuredemo2020
 ```
 
 ### Mongo VM connection string
 
-> Replace `[MONGOIP]` with the Public IP address of the MongoDB virtual machine. You can find this value by navigating to the `mod20[prefix]mongovm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
 ```
-mongodb://[MONGOIP]:27017
+mongodb://168.63.232.13:27017
 ```
 
 ### SQL Server 2012 connection string
 
-> Replace `[SQLIP]` with the Public IP address of the SQL virtual machine. You can find this value by navigating to the `mod20[prefix]sqlvm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-Server=tcp:[SQLIP],1433;Initial Catalog=tailwindsql;Persist Security Info=False;User ID=[USERNAME];Password=[PASSWORD];MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;
+Server=tcp:168.63.250.23,1433;Initial Catalog=tailwindsql;Persist Security Info=False;User ID=demouser;Password=Azuredemo2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;
 ```
 
 ### Mongo DB VM
 
-> Replace `[MONGOIP]` with the Public IP address of the MongoDB virtual machine. You can find this value by navigating to the `mod20[prefix]mongovm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-ssh [USERNAME]@[MONGOIP]
-password: [PASSWORD]
+ssh demouser@168.63.232.13
+password: Azuredemo2020
 ```
 
 ### Remote desktop SQL Server VM
 
-> Replace `[SQLIP]` with the Public IP address of the SQL virtual machine. You can find this value by navigating to the `mod20[prefix]sqlvm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-IP address: [SQLIP]
-Username: [USERNAME]
-Password: [PASSWORD]
+IP address: 168.63.250.23
+Username: demouser
+Password: Azuredemo2020
 ```
 
 ### Tailwindtraders website
 
 ```
-Username: cxa@microsoft.com
-Password: [any password works]
+Username: cxo@microsoft.com
+Password: 1234
 ```
 
 ### Azure SQL DB
 
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-Username: [USERNAME]
-Password: [PASSWORD]
+Username: demouser
+Password: Azuredemo2020
 ```
 
 ## Demo 1: MongoDB to CosmosDB migration
 
 ### Mongo DB VM
 
-> Replace `[MONGOIP]` with the Public IP address of the MongoDB virtual machine. You can find this value by navigating to the `mod20[prefix]mongovm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-ssh [USERNAME]@[MONGOIP]
-password: [PASSWORD]
+ssh demouser@168.63.232.13
+password: Azuredemo2020
 ```
 
 ### Tailwindtraders website
 
 ```
-Username: cxa@microsoft.com
-Password: [any password works]
+Username: cxo@microsoft.com
+Password: 1234
 ```
 
 ### Source connection string
 
-> Replace `[MONGOIP]` with the Public IP address of the MongoDB virtual machine. You can find this value by navigating to the `mod20[prefix]mongovm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
 ```
-mongodb://[MONGOIP]:27017
+mongodb://168.63.232.13:27017
 ```
 
 ### Target connection string
 
-> Replace `[COSMOSCONNECTIONSTRING]` with the PRIMARY CONNECTION STRING of the CosmosDB instance. You can find this value by navigating to the `mod20[prefix]cosmos` resource in the Azure Portal. The PRIMARY CONNECTION STRING is listed on the Connection String tab.
-
 ```
-[COSMOSCONNECTIONSTRING]
+mongodb://mod20judecosmos:GQOCRDZakFqxUEFVIre69tHfhBYtkdAWgG7NW73y5w38dtbwKkY8NHNTrsm6E3VpBi4LnxlHWUDXWpmHC0YXOg==@mod20judecosmos.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
 ```
 
 ### BAK target connection string
 
-> Replace `[BAKCOSMOSCONNECTIONSTRING]` with the PRIMARY CONNECTION STRING of the backup CosmosDB instance. You can find this value by navigating to the `mod20[prefix]cosmos-bak` resource in the Azure Portal. The PRIMARY CONNECTION STRING is listed on the Connection String tab.
-
 ```
-[BAKCOSMOSCONNECTIONSTRING]
+mongodb://mod20judecosmos-bak:tobhO05fMqtQylYGBKQnoeNzpEvnOybpCPTw33KKKJJOk0ibQFN2dRQG1lXphNZODgbQnuNEk4Fb7A4zPsA7uA==@mod20judecosmos-bak.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
 ```
 
 ### Cart item:
-
-> Nothing to replace here
 
 ```
 {
 	"_id" : "5d665a5689c79d19d44b4799",
 	"productId" : 99,
-	"email" : "cxa@microsoft.com",
+	"email" : "cxo@microsoft.com",
 	"imageUrl" : "https://github.com/ashleymcnamara/Developer-Advocate-Bit/blob/master/BitDevAdvocate.png?raw=true",
 	"name" : "Cloud Advocate Mascot",
 	"price" : "999",
@@ -139,44 +109,28 @@ mongodb://[MONGOIP]:27017
 
 ### Source SQL
 
-> Replace `[SQLIP]` with the Public IP address of the SQL virtual machine. You can find this value by navigating to the `mod20[prefix]sqlvm` resource in the Azure Portal. The Public IP address is listed on the Overview tab.
-
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-IP: [SQLIP]
-Username: [USERNAME]
-Password: [PASSWORD]
+IP: 168.63.250.23
+Username: demouser
+Password: Azuredemo2020
 ```
 
 ### Target SQL credentials (for Database migration service)
 
-> Replace `[SQLSERVERNAME]` with the Server name of the Azure SQL database. You can find this value by navigating to the `mod20[prefix]sqldb` resource in the Azure Portal. The Server name is listed on the Overview tab.
-
-> Replace `[USERNAME]` and `[PASSWORD]` with the values prepared [as described here](./01-preparation.md#credentials).
-
 ```
-Host name: [SQLSERVERNAME]
-Username: [USERNAME]
-Password: [PASSWORD]
+Host name: mod20judesqlsvr.database.windows.net
+Username: demouser
+Password: Azuredemo2020
 ```
 
 ### Target SQL Connection string
 
-> Replace `[AZURESQLCONNECTIONSTRING]` with the ADO.NET connection string of the Azure SQL Database instance. You can find this value by navigating to the `mod20[prefix]sqldb` resource in the Azure Portal. The ADO.NET connection string is listed on the Connection strings tab.
-
-> After copying the ADO.NET connection string from the Azure Portal, make sure to replace the placeholder `{your_username}` with the username prepared [as described here](./01-preparation.md#credentials); then replace the placeholder `{your_password}` with the password prepared [as described here](./01-preparation.md#credentials)
-
 ```
-[AZURESQLCONNECTIONSTRING]
+Server=tcp:mod20judesqlsvr.database.windows.net,1433;Initial Catalog=mod20judesqldb;Persist Security Info=False;User ID=demouser;Password=Azuredemo2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
 ### Target BAK SQL Connection string
 
-> Replace `[BAKAZURESQLCONNECTIONSTRING]` with the ADO.NET connection string of the backup Azure SQL Database instance. You can find this value by navigating to the `mod20[prefix]sqldb-bak` resource in the Azure Portal. The ADO.NET connection string is listed on the Connection strings tab.
-
-> After copying the ADO.NET connection string from the Azure Portal, make sure to replace the placeholder `{your_username}` with the username prepared [as described here](./01-preparation.md#credentials); then replace the placeholder `{your_password}` with the password prepared [as described here](./01-preparation.md#credentials)
-
 ```
-[BAKAZURESQLCONNECTIONSTRING]
+Server=tcp:mod20judesqlsvr.database.windows.net,1433;Initial Catalog=mod20judesqldb-bak;Persist Security Info=False;User ID=demouser;Password=Azuredemo2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```

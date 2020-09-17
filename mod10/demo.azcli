@@ -3,7 +3,7 @@ adminUser=demouser
 adminPassword=Azuredemo@2020
 subname='11321b33-1608-46d8-8a51-5d32cdd1b38a'
 location=southeastasia
-vmName=twtweb-money
+vmName=twtweb-mondemo
 cosmosdbname='ignitemod10-cosmos-money'
 sqldbname='ignitemod10-sql-money'
 vnetName='ignitemod10vnet'
@@ -48,4 +48,20 @@ az vm open-port  --resource-group $azureResourceGroup --name $vmName --port 22  
 ssh demouser@twtweb-money.southeastasia.cloudapp.azure.com
 
 sudo su -l
-curl https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-mod/main/mod10/deploy.sh >deploy.sh
+curl https://raw.githubusercontent.com/lettucebo/ignite-learning-paths-training-mod/main/mod10/deploy.sh >deploy.sh
+
+
+
+bash deploy.sh
+
+
+
+### Target BAK SQL Connection string
+
+```
+mongodb://mod20judecosmos-bak:tobhO05fMqtQylYGBKQnoeNzpEvnOybpCPTw33KKKJJOk0ibQFN2dRQG1lXphNZODgbQnuNEk4Fb7A4zPsA7uA==@mod20judecosmos-bak.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
+```
+
+```
+Server=tcp:mod20judesqlsvr.database.windows.net,1433;Initial Catalog=mod20judesqldb-bak;Persist Security Info=False;User ID=demouser;Password=Azuredemo2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+```

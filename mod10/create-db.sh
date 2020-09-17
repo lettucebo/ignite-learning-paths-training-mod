@@ -2,16 +2,16 @@
 set -e
 
 # Credentials
-azureResourceGroup=
-adminUser=
-adminPassword=
-subname=
-location=eastus
+azureResourceGroup='ignitemod10'
+adminUser='demouser'
+adminPassword='Azuredemo@2020'
+subname='11321b33-1608-46d8-8a51-5d32cdd1b38a'
+location='southeastasia'
 
 # DB Name
 
-cosmosdbname=
-sqldbname=
+cosmosdbname='ignitemod10-cosmos-money'
+sqldbname='ignitemod10-sql-money'
 
 # Create Resource Group
 az group create --subscription $subname --name $azureResourceGroup --location $location

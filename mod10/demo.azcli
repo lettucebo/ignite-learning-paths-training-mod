@@ -1,0 +1,46 @@
+azureResourceGroup=ignitemod10
+adminUser=demouser
+adminPassword=Azuredemo@2020
+subname='11321b33-1608-46d8-8a51-5d32cdd1b38a'
+location=southeastasia
+vmName=twtweb-money
+cosmosdbname='ignitemod10-cosmos-money'
+sqldbname='ignitemod10-sql-money'
+vnetName='ignitemod10vnet'
+
+az group create  --name $azureResourceGroup --location $location
+
+az network vnet create --name $vnetName --resource-group $azureResourceGroup --subnet-name default
+
+
+## use create-db.sh
+# Create Azure Cosmos DB
+az cosmosdb create --name $cosmosdbname --resource-group $azureResourceGroup --kind MongoDB --subscription $subname
+
+cosmosConnectionString=$(az cosmosdb list-connection-strings --name $cosmosdbname  --resource-group $azureResourceGroup --query connectionStrings[0].connectionString -o tsv --subscription $subname)
+
+# Create Azure SQL Insance
+az sql server create --location $location --resource-group $azureResourceGroup --name $sqldbname --admin-user $adminUser --admin-password $adminPassword --subscription $subname
+az sql server firewall-rule create --resource-group $azureResourceGroup --server $sqldbname --name azure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0 --subscription $subname
+az sql db create --resource-group $azureResourceGroup --server $sqldbname --name tailwind --subscription $subname
+sqlConnectionString=$(az sql db show-connection-string --server $sqldbname --name tailwind -c ado.net --subscription $subname)
+
+# mongodb://ignitemod10-cosmos-money:fUXkI0nLTsSy0z3sQRQHyQz6Nl7lTGnMhMkvw9NI2RpodKrLdJX5VqDFKDHBtI5LiDZUA5IU2qrcwoZicZHQ7w==@ignitemod10-cosmos-money.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
+echo $cosmosConnectionString
+# "Server=tcp:ignitemod10-sql-money.database.windows.net,1433;Database=tailwind;User ID=demouser;Password=Azuredemo@2020;Encrypt=true;Connection Timeout=30;"
+echo $sqlConnectionString
+
+
+az vm create  --resource-group $azureResourceGroup --name $vmName --public-ip-address-dns-name $vmName --image UbuntuLTS --admin-username $adminUser --admin-password $adminPassword --vnet-name $vnetName --size Standard_DS4_v2 --subnet default
+
+az vm open-port  --resource-group $azureResourceGroup --name $vmName --port 80 --priority "201"
+
+az vm open-port  --resource-group $azureResourceGroup --name $vmName --port 443 --priority "202"
+
+az vm open-port  --resource-group $azureResourceGroup --name $vmName --port 22  --priority "203"
+
+
+ssh demouser@twtweb-money.southeastasia.cloudapp.azure.com
+
+sudo su -l
+curl https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-mod/main/mod10/deploy.sh >deploy.sh

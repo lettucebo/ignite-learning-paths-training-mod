@@ -28,7 +28,7 @@ export apiUrl=/api/v1
 export ApiUrlShoppingCart=/api/v1
 export MongoConnectionString=""
 export SqlConnectionString=""
-export productImagesUrl="https://raw.githubusercontent.com/microsoft/TailwindTraders-Backend/master/Deploy/tailwindtraders-images/product-detail"
+export productImagesUrl="https://raw.githubusercontent.com/microsoft/TailwindTraders-Backend/main/Deploy/tailwindtraders-images/product-detail"
 
 sleep .5
 

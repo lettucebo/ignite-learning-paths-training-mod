@@ -11,14 +11,14 @@
         },
         "username": {
             "type": "string",
-            "defaultValue": "tailwind",
+            "defaultValue": "demouser",
             "metadata": {
                 "description": "The username for the VMs and for the Azure SQL DB"
             }
         },
 		"password": {
 			"type": "securestring",
-			"defaultValue": "traderstraders42.",
+			"defaultValue": "Azuredemo2020",
             "metadata": {
                 "description": "The password. No '@', '!' or using the username"
             }
@@ -152,7 +152,7 @@
                         },
                         {
                             "name": "ProductImagesUrl",
-                            "value": "https://raw.githubusercontent.com/microsoft/TailwindTraders-Backend/master/Source/Services/Tailwind.Traders.Product.Api/Setup/product-images/product-details"
+                            "value": "https://raw.githubusercontent.com/microsoft/TailwindTraders-Backend/main/Source/Services/Tailwind.Traders.Product.Api/Setup/product-images/product-details"
                         }
                     ],
                     "metadata": [
@@ -174,7 +174,7 @@
                         "[resourceId('Microsoft.Web/Sites', variables('name'))]"
                     ],
                     "properties": {
-                        "RepoUrl": "https://github.com/lbugnion/TailwindTraders-Website",
+                        "RepoUrl": "https://github.com/lettucebo/TailwindTraders-Website",
                         "branch": "master",
                         "IsManualIntegration": true
                     }

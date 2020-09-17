@@ -1,4 +1,4 @@
-azureResourceGroup=ignitemod10
+azureResourceGroup=ignitemod10demo
 adminUser=demouser
 adminPassword=Azuredemo@2020
 subname='11321b33-1608-46d8-8a51-5d32cdd1b38a'
@@ -8,10 +8,15 @@ cosmosdbname='ignitemod10-cosmos-money'
 sqldbname='ignitemod10-sql-money'
 vnetName='ignitemod10vnet'
 
-az group create  --name $azureResourceGroup --location $location
+## Step 01
+az group create --name ignitemod10demo --location southeastasia
 
-az network vnet create --name $vnetName --resource-group $azureResourceGroup --subnet-name default
+## Step 02
+az network vnet create --name ignitemod10demovnet --resource-group ignitemod10demo --subnet-name default
 
+## Step 03
+# ** 使用 Portal 來建立 VM **
+# az vm create  --resource-group $azureResourceGroup --name $vmName --public-ip-address-dns-name $vmName --image UbuntuLTS --admin-username $adminUser --admin-password $adminPassword --vnet-name $vnetName --size Standard_DS4_v2 --subnet default
 
 ## use create-db.sh
 # Create Azure Cosmos DB
@@ -31,7 +36,7 @@ echo $cosmosConnectionString
 echo $sqlConnectionString
 
 
-az vm create  --resource-group $azureResourceGroup --name $vmName --public-ip-address-dns-name $vmName --image UbuntuLTS --admin-username $adminUser --admin-password $adminPassword --vnet-name $vnetName --size Standard_DS4_v2 --subnet default
+
 
 az vm open-port  --resource-group $azureResourceGroup --name $vmName --port 80 --priority "201"
 

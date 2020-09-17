@@ -11,14 +11,14 @@
         },
         "username": {
             "type": "string",
-            "defaultValue": "tailwind",
+            "defaultValue": "demouser",
             "metadata": {
                 "description": "The username for the VMs and for the Azure SQL DB"
             }
         },
 		"password": {
 			"type": "securestring",
-			"defaultValue": "traderstraders42.",
+			"defaultValue": "Azuredemo2020",
             "metadata": {
                 "description": "The password. No '@', '!' or using the username"
             }
@@ -379,7 +379,7 @@
 					}
 				},
                 "hardwareProfile": {
-                    "vmSize": "Standard_DS1_v2"
+                    "vmSize": "Standard_DS3_v2"
                 },
 				"storageProfile": {
 					"imageReference": {
@@ -416,7 +416,7 @@
 					"autoUpgradeMinorVersion": true,
 					"settings": {
 						"fileUris": [
-							"https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-mod/master/mod20/DeploymentTemplates/configure-mongo.sh"
+							"https://raw.githubusercontent.com/microsoft/ignite-learning-paths-training-mod/main/mod20/DeploymentTemplates/configure-mongo.sh"
 						]
 					},
 					"protectedSettings": {
